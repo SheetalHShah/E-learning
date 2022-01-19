@@ -1,0 +1,251 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from edumin.dexignlab.com/xhtml/add-student.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 May 2021 03:16:29 GMT -->
+<head>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Edumin - Bootstrap Admin Dashboard </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="stylesheet" href="{% static 'Tutor/vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Tutor/css/style.css' %}">
+	
+	<!-- Pick date -->
+    <link rel="stylesheet" href="{% static 'Tutor/vendor/pickadate/themes/default.css' %}">
+    <link rel="stylesheet" href="{% static 'Tutor/vendor/pickadate/themes/default.date.css' %}">
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="index.html" class="brand-logo">
+                <img class="logo-abbr" src="images/logo-white.png" alt="">
+                <img class="logo-compact" src="images/logo-text-white.png" alt="">
+                <img class="brand-title" src="images/logo-text-white.png" alt="">
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="dlabnav">
+            <div class="dlabnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <!-- <li class="nav-label first">Main Menu</li> -->
+                    <li><a href="{% url 'indexTutor' %}" aria-expanded="false">
+							<i class="la la-home"></i>
+							<span class="nav-text">Dashboard</span>
+						</a>
+                        <!-- <ul aria-expanded="false">
+                            <li><a href="index.html">Dashboard 1</a></li>
+                            <li><a href="index-2.html">Dashboard 2</a></li>
+                            <li><a href="index-3.html">Dashboard 3</a></li>
+                        </ul> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+       
+<!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+				
+				<div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Tutor Profile</h4>
+                        </div>
+                    </div>
+                    <!--<div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Students</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Add Student</a></li>
+                        </ol>
+                    </div> -->
+                </div>
+				
+				<div class="row">
+					<div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+								<h5 class="card-title">Basic Info</h5>
+							</div>
+							<div class="card-body">
+                                <form action="{% url 'Tutor_data' pk=request.session.id %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">First Name</label>
+												<input type="text" class="form-control" name="firstname" value="{{key1.Firstname}}">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Last Name</label>
+												<input type="text" class="form-control" name="lastname" value="{{key1.Lastname}}">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Email</label>
+												<input type="text" class="form-control" name="email" value="{{key1.user_id.Email}}">
+											</div>
+										</div>
+
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Qualification</label>
+												<input type="text" class="form-control" name="qualification" value="{{key1.Qualification}}">
+											</div>
+										</div>
+
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Gender</label>
+												<select class="form-control" name="gender">
+													<option value="Gender">{{key1.Gender}}</option>
+													<option value="Male">Male</option>
+													<option value="Female">Female</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Mobile Number</label>
+												<input type="text" class="form-control" name="contact" value="{{key1.Contact}}">
+											</div>
+										</div>
+										
+											<div class="form-group">
+												<label>Date of Birth</label>
+												<input type="date" class="form-control" name="DOB" value="{{key1.DOB|date:'Y-m-d'}}">
+											</div>
+										</div>
+										
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Address</label>
+												<input class="form-control" name="address" rows="5" value="{{key1.Address}}">
+											</div>
+										</div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Country</label>
+												<input type="text" class="form-control" name="country" value="{{key1.Country}}">
+											</div>
+										</div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">State</label>
+												<input type="text" class="form-control" name="state" value="{{key1.State}}">
+											</div>
+										</div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">City</label>
+												<input type="text" class="form-control" name="city" value="{{key1.City}}">
+											</div>
+										</div>
+
+										<!-- <div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group fallback w-100">
+												<input type="file" class="dropify" data-default-file="">
+											</div>
+										</div> -->
+
+                                        <div class="form-group">
+                                            <label>Profile_Pic</label>
+                                            <input type="file" placeholder="" class="form-control" name="Pic">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Profile_Pic</label>
+                                            <img src="{{MEDIA_URL}}{{key1.Profile_Pic.url}}" alt="" srcset="" width="150px" height="150px">
+                                        </div>
+
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<button type="submit" class="btn btn-primary">Submit</button>
+											<button type="submit" class="btn btn-light">Cancel</button>
+										</div>
+									</div>
+								</form>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+                
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+<!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+	<script src="{% static 'Tutor/vendor/global/global.min.js' %}"></script>
+	<script src="{% static 'Tutor/vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'Tutor/js/custom.min.js' %}"></script>
+	<script src="{% static 'Tutor/js/dlabnav-init.js' %}"></script>
+
+	<!-- Svganimation scripts -->
+    <script src="{% static 'Tutor/vendor/svganimation/vivus.min.js' %}"></script>
+    <script src="{% static 'Tutor/vendor/svganimation/svg.animation.js' %}"></script>
+    <script src="{% static 'Tutor/js/styleSwitcher.js' %}"></script>
+	
+	<!-- pickdate -->
+    <script src="{% static 'Tutor/vendor/pickadate/picker.js' %}"></script>
+    <script src="{% static 'Tutor/vendor/pickadate/picker.time.js' %}"></script>
+    <script src="{% static 'Tutor/vendor/pickadate/picker.date.js' %}"></script>
+	
+	<!-- Pickdate -->
+    <script src="{% static 'Tutor/js/plugins-init/pickadate-init.js' %}"></script>
+	
+</body>
+
+<!-- Mirrored from edumin.dexignlab.com/xhtml/add-student.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 May 2021 03:16:29 GMT -->
+</html>
